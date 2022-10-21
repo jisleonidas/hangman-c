@@ -6,7 +6,7 @@
 #define FALSE 0
 
 void obfuscate_word(char *word, int *c_count);
-int check_vowel(char ch);
+int is_vowel(char ch);
 
 int main()
 {
@@ -31,7 +31,7 @@ void obfuscate_word(char *word, int *consonant_count)
 	for (i = 0; i < 15; i++) {
 		ch = *word;
 		if (ch != '\0')
-			if (!check_vowel(ch)) {
+			if (!is_vowel(ch)) {
 				*word = '-';
 				(*consonant_count)++; /* Brackets are must! */
 			}
@@ -39,7 +39,7 @@ void obfuscate_word(char *word, int *consonant_count)
 	}
 }
 
-int check_vowel(char ch)
+int is_vowel(char ch)
 {
 	int i;
 	char vowels[5] = "aeiou";
