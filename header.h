@@ -2,6 +2,7 @@
 #include <string.h>
 
 #define MAX_WORD_LENGTH 15
+#define MAX_GUESSES 8
 
 #define TRUE 1
 #define FALSE 0
