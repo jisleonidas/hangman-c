@@ -14,7 +14,7 @@ int guess_handler(char *obfus_word, char *word, int consonant_count)
         strcpy(original_word, word);
 
         while (rem_guesses > 0) {
-                printf("Question word: %s\n", obfus_word);
+                printf("\nQuestion word: %s\n", obfus_word);
                 printf("Enter your guess (one character): ");
                 ch = getchar();
                 one_ch_input = skipgarb();
