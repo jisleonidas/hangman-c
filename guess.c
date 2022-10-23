@@ -3,7 +3,7 @@
 int guess_handler(char *obfus_word, char *word)
 {
         char ch;
-        int one_ch_input = FALSE, index_char, guess_correct, rem_guesses;
+        int one_ch_input = FALSE, guess_correct, rem_guesses;
         rem_guesses = MAX_GUESSES;
 
         while (rem_guesses > 0) {
