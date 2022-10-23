@@ -1,6 +1,6 @@
 #include "header.h"
 
-int check_guess(char ch, char *obfus_word, char *word);
+int check_guess(char ch, int *rem_guesses, char *obfus_word, char *word);
 
 int guess_handler(char *obfus_word, char *word, int consonant_count)
 {
@@ -19,17 +19,10 @@ int guess_handler(char *obfus_word, char *word, int consonant_count)
                 ch = getchar();
                 one_ch_input = skipgarb();
                 if (one_ch_input) {
-                        guess_correct = check_guess(ch, obfus_word, word);
-                        if (guess_correct) {
+                        guess_correct = check_guess(ch, &rem_guesses,
+                                obfus_word, word);
+                        if (guess_correct)
                                 consonant_count -= 1;
-                        }
-                        else {
-                                printf("Your guess is wrong.");
-                                printf("TRY AGAIN.\n");
-                                rem_guesses -= 1;
-                                printf("Remaining attempts: %d\n"
-                                        , rem_guesses);
-                        }
                 }
                 else {
                         printf("Please enter only one character.\n");
@@ -42,12 +35,13 @@ int guess_handler(char *obfus_word, char *word, int consonant_count)
                 }
         }
 
-        if (rem_guesses == 0)
+        if (rem_guesses == 0) {
                 printf("Sorry. You have run out of attempts. ");
                 printf("You have not guessed the word.\n");
+        }
 }
 
-int check_guess(char ch, char *obfus_word, char *word)
+int check_guess(char ch, int *rem_guesses, char *obfus_word, char *word)
 {
         int i;
 
@@ -67,6 +61,11 @@ int check_guess(char ch, char *obfus_word, char *word)
                                 word[i] = '-';
                                 return TRUE;
                         }
+                printf("Your guess is wrong.");
+                printf("TRY AGAIN.\n");
+                *rem_guesses -= 1;
+                printf("Remaining attempts: %d\n"
+                        , *rem_guesses);
                 return FALSE;
         }
 }
