@@ -3,14 +3,17 @@
 int guess_handler(char *obfus_word, char *word)
 {
         char ch;
-        int one_ch_input = FALSE, index_char;
+        int one_ch_input = FALSE, index_char, guess_correct, rem_guesses;
+        rem_guesses = MAX_GUESSES;
 
         while (TRUE) {
                 printf("Enter your guess (one character): ");
                 ch = getchar();
                 one_ch_input = skipgarb();
                 if (one_ch_input) {
-                        check_guess(ch, word);
+                        guess_correct = check_guess(ch, word);
+                        if (!guess_correct)
+                                rem_guesses -= 1;
                 }
                 else {
                         printf("Please enter only one character.\n");
