@@ -11,7 +11,7 @@ int guess_handler(char *obfus_word, char *word)
                 ch = getchar();
                 one_ch_input = skipgarb();
                 if (one_ch_input) {
-                        guess_correct = check_guess(ch, word);
+                        guess_correct = check_guess(ch, obfus_word, word);
                         if (!guess_correct)
                                 rem_guesses -= 1;
                 }
@@ -21,7 +21,7 @@ int guess_handler(char *obfus_word, char *word)
         }
 }
 
-int check_guess(char ch, char *word)
+int check_guess(char ch, char *obfus_word, char *word)
 {
         int i;
 
@@ -34,8 +34,11 @@ int check_guess(char ch, char *word)
         }
         else {
                 for (i = 0; i < MAX_WORD_LENGTH; i++)
-                        if (ch == word[i])
+                        if (ch == word[i]) {
+                                print("Your guess is correct! Continue playing.");
+                                obfus_word[i] = ch;
                                 return TRUE;
+                        }
                 return FALSE;
         }
 }
