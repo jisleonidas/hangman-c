@@ -54,7 +54,8 @@ int check_guess(char ch, char *obfus_word, char *word)
         else {
                 for (i = 0; i < MAX_WORD_LENGTH; i++)
                         if (ch == word[i]) {
-                                printf("Your guess is correct! Continue playing.\n");
+                                printf("Your guess is correct! Continue ");
+                                printf("playing.\n");
                                 obfus_word[i] = ch;
                                 word[i] = '-';
                                 return TRUE;
