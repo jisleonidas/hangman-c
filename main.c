@@ -1,4 +1,5 @@
 #include "header.h"
+#include "guess.c"
 
 void obfuscate_word(char *word, int *c_count);
 
@@ -13,9 +14,7 @@ int main()
 	/* printf("%d\n", consonant_count); */
 
 	printf("Welcome to a game of HANGMAN!\n");
-
-	printf("Word to be guessed: %s\n", word);
-
+	guess_handler(word, copy_word, consonant_count);
 	return 0;
 }
 

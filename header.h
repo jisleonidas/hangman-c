@@ -1,3 +1,6 @@
+#ifndef HEADER_H
+#define HEADER_H
+
 #include <stdio.h>
 #include <string.h>
 
@@ -40,7 +43,7 @@ int is_alpha(char ch)
 	for (i = 0; i < 26; i++) {
 		if (ch == alphabet[i])
 			return TRUE;
-		else
-			return FALSE;
 	}
+	return FALSE;
 }
+#endif /* HEADER_H*/
