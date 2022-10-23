@@ -7,6 +7,7 @@ int guess_handler(char *obfus_word, char *word)
         rem_guesses = MAX_GUESSES;
 
         while (rem_guesses > 0) {
+                printf("Question word: %s\n", obfus_word);
                 printf("Enter your guess (one character): ");
                 ch = getchar();
                 one_ch_input = skipgarb();
