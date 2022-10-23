@@ -26,6 +26,9 @@ int guess_handler(char *obfus_word, char *word, int consonant_count)
                         else {
                                 printf("Your guess is wrong.");
                                 printf("TRY AGAIN.\n");
+                                rem_guesses -= 1;
+                                printf("Remaining attempts: %d\n"
+                                        , rem_guesses);
                         }
                 }
                 else {
@@ -38,6 +41,10 @@ int guess_handler(char *obfus_word, char *word, int consonant_count)
                         break;
                 }
         }
+
+        if (rem_guesses == 0)
+                printf("Sorry. You have run out of attempts. ");
+                printf("You have not guessed the word.\n");
 }
 
 int check_guess(char ch, char *obfus_word, char *word)
