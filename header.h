@@ -16,10 +16,10 @@ int skipgarb()
                 return TRUE;
         }
         else {
-                while (TRUE) {
+                while (getchar() != '\n') {
                 }
+		return FALSE;
         }
-        return FALSE;
 }
 
 int is_vowel(char ch)
