@@ -4,6 +4,7 @@ void add_word(FILE *words_file, char *(*words), char *word, int word_num);
 
 int main()
 {
+        int i;
         char ch, word[MAX_WORD_LENGTH], *words[100][MAX_WORD_LENGTH];
         FILE *words_file;
 
