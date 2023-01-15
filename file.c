@@ -7,7 +7,7 @@ int main()
 {
         int i, j;
         char ch, word[MAX_WORD_LENGTH];
-        char words[100][MAX_WORD_LENGTH] = {'\0'};
+        char words[100][MAX_WORD_LENGTH] = {'\0'}; /* Intialize empty string*/
         FILE *words_file;
 
         words_file = fopen("words.txt", "r");
