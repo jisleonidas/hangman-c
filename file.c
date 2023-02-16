@@ -16,7 +16,7 @@ int main()
 
         for (i = 0; i < 100; i++) /* Testing to see if function */
                 printf("%s\n", words[i]); /* works properly.*/
-        
+
         fclose(words_file);
 }
 
