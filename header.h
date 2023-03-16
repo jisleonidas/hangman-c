@@ -25,7 +25,7 @@ int skipgarb()
 int is_vowel(char ch)
 {
 	int i;
-	char vowels[5] = "aeiou";
+	static char vowels[5] = "aeiou";
 
 	for (i = 0; i < 5; i++) {
 		if (ch == vowels[i])
