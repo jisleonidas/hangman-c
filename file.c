@@ -3,7 +3,7 @@
 void add_word(FILE *words_file, char (*words)[MAX_WORD_LENGTH], char *word);
 char strip_line(FILE *words_file, char (*words)[MAX_WORD_LENGTH], char *word);
 
-int main()
+void read_words(char r_words[100][MAX_WORD_LENGTH])
 {
         int i, j;
         char ch, word[MAX_WORD_LENGTH];
@@ -14,8 +14,12 @@ int main()
 
         add_word(words_file, words, word);
 
-        for (i = 0; i < 100; i++) /* Testing to see if function */
-                printf("%s\n", words[i]); /* works properly.*/
+        /* for (i = 0; i < 100; i++) /* Testing to see if function */
+        /*        printf("%s\n", words[i]); /* works properly.*/
+
+        for (i = 0; i < 100; i++) {
+                strcpy(r_words[i], words[i]);
+        }
 
         fclose(words_file);
 }
