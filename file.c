@@ -7,7 +7,7 @@ void read_words(char r_words[100][MAX_WORD_LENGTH])
 {
         int i, j;
         char ch, word[MAX_WORD_LENGTH];
-        char words[100][MAX_WORD_LENGTH] = {'\0'}; /* Intialize empty string*/
+        char words[MAX_WORDS][MAX_WORD_LENGTH] = {'\0'}; /* Intialize empty string*/
         FILE *words_file;
 
         words_file = fopen("words.txt", "r");
@@ -17,7 +17,7 @@ void read_words(char r_words[100][MAX_WORD_LENGTH])
         /* for (i = 0; i < 100; i++) /* Testing to see if function */
         /*        printf("%s\n", words[i]); /* works properly.*/
 
-        for (i = 0; i < 100; i++) {
+        for (i = 0; i < MAX_WORDS; i++) {
                 strcpy(r_words[i], words[i]);
         }
 
@@ -28,7 +28,7 @@ void add_word(FILE *words_file, char (*words)[MAX_WORD_LENGTH], char *word)
 {
         int word_num = 0;
         char final_char;
-        for (word_num=0; word_num<100; word_num++) {
+        for (word_num = 0; word_num < MAX_WORDS; word_num++) {
                 /*
                 if (strip_line(words_file, words, word) == '\n') {
                         strcpy(words[word_num], word);

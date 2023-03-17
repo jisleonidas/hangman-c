@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#define MAX_WORDS 100
 #define MAX_WORD_LENGTH 15
 #define MAX_GUESSES 8
 

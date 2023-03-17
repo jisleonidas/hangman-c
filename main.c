@@ -8,13 +8,13 @@ int main()
 {
 	int i, consonant_count; /* No. of consonants in current word. */
 	char *word, *obfus_word;
-	char words[100][MAX_WORD_LENGTH], copy_word[MAX_WORD_LENGTH];
+	char words[MAX_WORDS][MAX_WORD_LENGTH], copy_word[MAX_WORD_LENGTH];
 
 	read_words(words); /* Read words from file words.txt */
 	
 	printf("Welcome to a game of HANGMAN!\n");
 
-	for (i = 0; i < 100; i++) {
+	for (i = 0; i < MAX_WORDS; i++) {
 		consonant_count = 0; /* Reset consonant count for every word. */
 		word = words[i]; /* Select (i+1)th word */
 
