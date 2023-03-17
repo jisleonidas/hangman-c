@@ -7,7 +7,7 @@ void obfuscate_word(char *word, int *c_count);
 int main()
 {
 	int i, consonant_count; /* No. of consonants in current word. */
-	char *word;
+	char *word, *obfus_word;
 	char words[100][MAX_WORD_LENGTH], copy_word[MAX_WORD_LENGTH];
 
 	read_words(words); /* Read words from file words.txt */
@@ -18,8 +18,9 @@ int main()
 		consonant_count = 0; /* Reset consonant count for every word. */
 		word = words[i]; /* Select (i+1)th word */
 		strcpy(copy_word, word); /* Make a copy of actual word */
+		obfus_word = word;
 		obfuscate_word(word, &consonant_count); /* Obfuscate actual word */
-		guess_handler(word, copy_word, consonant_count);
+		guess_handler(obfus_word, copy_word, consonant_count);
 	}
 
 	return 0;
@@ -32,11 +33,12 @@ void obfuscate_word(char *word, int *consonant_count)
 
 	for (i = 0; i < MAX_WORD_LENGTH; i++) {
 		ch = *word;
-		if (ch != '\0')
-			if (!is_vowel(ch)) {
-				*word = '-';
-				(*consonant_count)++; /* Brackets are must! */
-			}
+		if (ch == '\0')
+			return;
+		if (!is_vowel(ch)) {
+			*word = '-';
+			(*consonant_count)++; /* Brackets are must! */
+		}
 		word++;
 	}
 }
