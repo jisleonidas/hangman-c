@@ -17,6 +17,10 @@ int main()
 	for (i = 0; i < 100; i++) {
 		consonant_count = 0; /* Reset consonant count for every word. */
 		word = words[i]; /* Select (i+1)th word */
+
+		if (!(strlen(word) > 0))  /* Skip if there is no word. */
+			continue;
+
 		strcpy(copy_word, word); /* Make a copy of actual word */
 		obfus_word = word;
 		obfuscate_word(word, &consonant_count); /* Obfuscate actual word */
