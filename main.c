@@ -1,20 +1,32 @@
 #include "header.h"
 #include "guess.c"
+#include "file.c"
 
 void obfuscate_word(char *word, int *c_count);
 
 int main()
 {
-	int consonant_count = 0; /* No. of consonants in current word. */
-	char word[MAX_WORD_LENGTH] = "hangman", copy_word[MAX_WORD_LENGTH];
+	int i, consonant_count; /* No. of consonants in current word. */
+	char *word, *obfus_word;
+	char words[100][MAX_WORD_LENGTH], copy_word[MAX_WORD_LENGTH];
 
-	strcpy(copy_word, word); /* copy to copy_word, the contents of word */
-
-	obfuscate_word(word, &consonant_count);
-	/* printf("%d\n", consonant_count); */
-
+	read_words(words); /* Read words from file words.txt */
+	
 	printf("Welcome to a game of HANGMAN!\n");
-	guess_handler(word, copy_word, consonant_count);
+
+	for (i = 0; i < 100; i++) {
+		consonant_count = 0; /* Reset consonant count for every word. */
+		word = words[i]; /* Select (i+1)th word */
+
+		if (!(strlen(word) > 0))  /* Skip if there is no word. */
+			continue;
+
+		strcpy(copy_word, word); /* Make a copy of actual word */
+		obfus_word = word;
+		obfuscate_word(word, &consonant_count); /* Obfuscate actual word */
+		guess_handler(obfus_word, copy_word, consonant_count);
+	}
+
 	return 0;
 }
 
@@ -25,11 +37,12 @@ void obfuscate_word(char *word, int *consonant_count)
 
 	for (i = 0; i < MAX_WORD_LENGTH; i++) {
 		ch = *word;
-		if (ch != '\0')
-			if (!is_vowel(ch)) {
-				*word = '-';
-				(*consonant_count)++; /* Brackets are must! */
-			}
+		if (ch == '\0')
+			return;
+		if (!is_vowel(ch)) {
+			*word = '-';
+			(*consonant_count)++; /* Brackets are must! */
+		}
 		word++;
 	}
 }
