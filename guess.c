@@ -51,6 +51,7 @@ int check_guess(char ch, int *rem_guesses, char *obfus_word, char *word)
         }
         if (is_vowel(ch)) {
                 printf("Please enter only consonants.\n");
+                return FALSE;
         }
         else {
                 for (i = 0; i < MAX_WORD_LENGTH; i++)
