@@ -17,7 +17,10 @@ int guess_handler(char *obfus_word, char *word, int consonant_count)
                 printf("\nQuestion word: %s\n", obfus_word);
                 printf("Enter your guess (one character): ");
                 ch = getchar();
+
+                /* Check if only one character was entered. */
                 one_ch_input = skipgarb();
+
                 if (one_ch_input) {
                         guess_correct = check_guess(ch, &rem_guesses,
                                 obfus_word, word);
@@ -59,7 +62,16 @@ int check_guess(char ch, int *rem_guesses, char *obfus_word, char *word)
                                 printf("Your guess is correct! Continue ");
                                 printf("playing.\n");
                                 obfus_word[i] = ch;
+
+                                /*
+                                 * Correctly guessed letter is blotted out
+                                 * from the actual word against which the
+                                 * input char is matched so as to not match
+                                 * the same letter at the same location 
+                                 * repeatedly.
+                                 */
                                 word[i] = '-';
+
                                 return TRUE;
                         }
                 printf("Your guess is wrong.");

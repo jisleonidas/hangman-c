@@ -25,9 +25,11 @@ void add_word(FILE *words_file, char (*words)[MAX_WORD_LENGTH], char *word)
 {
         int word_num = 0;
         char final_char;
+
         for (word_num = 0; word_num < MAX_WORDS; word_num++) {
                 final_char = strip_line(words_file, words, word);
                 strcpy(words[word_num], word);
+
                 if (final_char == EOF)
                         break;
         }
