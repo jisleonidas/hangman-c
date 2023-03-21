@@ -27,10 +27,15 @@ int guess_handler(char *obfus_word, char *word, int consonant_count)
                                 obfus_word, word);
                         if (guess_correct)
                                 consonant_count -= 1;
-                }
-                else {
+                } else {
                         printf("Please enter only one character.\n");
                 }
+
+                /*
+                 * Only the consonants are to be guessed in the given word.
+                 * If all the consonants have been guessed, print the
+                 * congratulatory message.
+                 */
                 if (consonant_count == 0) {
                         printf("You have guessed the word correctly!");
                         printf(" CONGRATS!\n");
