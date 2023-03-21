@@ -1,6 +1,7 @@
 #include "header.h"
 
 int check_guess(char ch, int *rem_guesses, char *obfus_word, char *word);
+int match_char(char ch, int *rem_guesses, char *obfus_word, char *word);
 
 int guess_handler(char *obfus_word, char *word, int consonant_count)
 {
@@ -52,33 +53,41 @@ int check_guess(char ch, int *rem_guesses, char *obfus_word, char *word)
                 printf("Please enter only letters of the alphabet.\n");
                 return FALSE;
         }
+
         if (is_vowel(ch)) {
                 printf("Please enter only consonants.\n");
                 return FALSE;
+        } else {
+                return match_char(ch, rem_guesses, obfus_word, word);
         }
-        else {
-                for (i = 0; i < MAX_WORD_LENGTH; i++)
-                        if (ch == word[i]) {
-                                printf("Your guess is correct! Continue ");
-                                printf("playing.\n");
-                                obfus_word[i] = ch;
+}
 
-                                /*
-                                 * Correctly guessed letter is blotted out
-                                 * from the actual word against which the
-                                 * input char is matched so as to not match
-                                 * the same letter at the same location 
-                                 * repeatedly.
-                                 */
-                                word[i] = '-';
+int match_char(char ch, int *rem_guesses, char *obfus_word, char *word)
+{
+        int i;
 
-                                return TRUE;
-                        }
-                printf("Your guess is wrong.");
-                printf("TRY AGAIN.\n");
-                *rem_guesses -= 1;
-                printf("Remaining attempts: %d\n"
-                        , *rem_guesses);
-                return FALSE;
-        }
+        for (i = 0; i < MAX_WORD_LENGTH; i++)
+                if (ch == word[i]) {
+                        printf("Your guess is correct! Continue ");
+                        printf("playing.\n");
+                        obfus_word[i] = ch;
+
+                        /*
+                        * Correctly guessed letter is blotted out
+                        * from the actual word against which the
+                        * input char is matched so as to not match
+                        * the same letter at the same location
+                        * repeatedly.
+                        */
+                        word[i] = '-';
+
+                        return TRUE;
+                }
+
+        printf("Your guess is wrong.");
+        printf("TRY AGAIN.\n");
+        *rem_guesses -= 1;
+        printf("Remaining attempts: %d\n"
+                , *rem_guesses);
+        return FALSE;
 }
