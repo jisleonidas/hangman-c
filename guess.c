@@ -78,12 +78,11 @@ int match_char(char ch, int *rem_guesses, char *obfus_word, char *word)
                         obfus_word[i] = ch;
 
                         /*
-                        * Correctly guessed letter is blotted out
-                        * from the actual word against which the
-                        * input char is matched so as to not match
-                        * the same letter at the same location
-                        * repeatedly.
-                        */
+                         * Correctly guessed letter is blotted out from the
+                         * actual word against which the input char is matched
+                         * so as to not match the same letter at the same
+                         * location repeatedly.
+                         */
                         word[i] = '-';
 
                         return TRUE;
