@@ -39,7 +39,7 @@ int is_vowel(char ch)
 int is_alpha(char ch)
 {
         int i;
-        char alphabet[26] = "abcdefghijklmnopqrstuvwxyz";
+        static char alphabet[26] = "abcdefghijklmnopqrstuvwxyz";
 
 	for (i = 0; i < 26; i++) {
 		if (ch == alphabet[i])
