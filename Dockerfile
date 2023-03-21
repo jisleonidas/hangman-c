@@ -1,11 +1,11 @@
-FROM localhost/rockylinux-gcc:9
+FROM public.ecr.aws/docker/library/fedora:37
+
+RUN dnf install -y gcc
 
 WORKDIR /app
 
-COPY *.c header.h /app
+COPY . .
 
 RUN gcc main.c -o hangman-c
-
-RUN dnf remove -y gcc
 
 ENTRYPOINT ["./hangman-c"]
