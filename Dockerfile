@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/fedora:37
+FROM registry.fedoraproject.org/fedora:37
 
 RUN dnf install -y gcc
 
