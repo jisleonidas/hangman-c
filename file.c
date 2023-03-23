@@ -1,7 +1,9 @@
 #include "header.h"
 
-void add_word(FILE *words_file, char (*words)[MAX_WORD_LENGTH], char *word);
-char strip_line(FILE *words_file, char (*words)[MAX_WORD_LENGTH], char *word);
+void add_word(FILE *words_file, char words[MAX_WORDS][MAX_WORD_LENGTH],
+                char *word);
+char strip_line(FILE *words_file, char words[MAX_WORDS][MAX_WORD_LENGTH],
+                char *word);
 
 void read_words(char r_words[MAX_WORDS][MAX_WORD_LENGTH])
 {
@@ -21,7 +23,8 @@ void read_words(char r_words[MAX_WORDS][MAX_WORD_LENGTH])
         fclose(words_file);
 }
 
-void add_word(FILE *words_file, char (*words)[MAX_WORD_LENGTH], char *word)
+void add_word(FILE *words_file, char words[MAX_WORDS][MAX_WORD_LENGTH],
+                char *word)
 {
         int word_num = 0;
         char final_char;
@@ -35,7 +38,8 @@ void add_word(FILE *words_file, char (*words)[MAX_WORD_LENGTH], char *word)
         }
 }
 
-char strip_line(FILE *words_file, char (*words)[MAX_WORD_LENGTH], char *word)
+char strip_line(FILE *words_file, char words[MAX_WORDS][MAX_WORD_LENGTH],
+                char *word)
 {
         int i, j;
         char ch;
