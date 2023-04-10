@@ -9,7 +9,9 @@ void read_words(char r_words[MAX_WORDS][MAX_WORD_LENGTH])
 {
         int i, j;
         char ch, word[MAX_WORD_LENGTH];
-        char words[MAX_WORDS][MAX_WORD_LENGTH] = {'\0'}; /* Intialize empty string*/
+
+        /* Intialize empty string */
+        char words[MAX_WORDS][MAX_WORD_LENGTH] = {'\0'}; 
         FILE *words_file;
 
         words_file = fopen("words.txt", "r");
